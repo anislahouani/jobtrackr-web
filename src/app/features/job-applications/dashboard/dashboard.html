@@ -1,0 +1,40 @@
+<div class="dashboard-page">
+  <header class="dashboard-header">
+    <div>
+      <h1>JobTrackr</h1>
+      <p>Bienvenue {{ firstName }} 👋</p>
+    </div>
+
+    <a href="/applications/new">Nouvelle candidature</a>
+  </header>
+
+  @if (isLoading) {
+    <p>Chargement...</p>
+  }
+
+  @if (errorMessage) {
+    <p class="error-message">{{ errorMessage }}</p>
+  }
+
+  @if (!isLoading && applications.length === 0) {
+    <div class="empty-state">
+      <h2>Aucune candidature</h2>
+      <p>Ajoute ta première candidature pour commencer.</p>
+    </div>
+  }
+
+  <section class="applications-grid">
+    @for (application of applications; track application.id) {
+      <article class="application-card">
+        <h2>{{ application.company }}</h2>
+        <h3>{{ application.position }}</h3>
+
+        @if (application.location) {
+          <p>{{ application.location }}</p>
+        }
+
+        <p>Statut : {{ application.status }}</p>
+      </article>
+    }
+  </section>
+</div>

@@ -1,0 +1,35 @@
+<div class="auth-page">
+  <div class="auth-card">
+    <h1>Connexion</h1>
+    <p>Connecte-toi pour gérer tes candidatures.</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <label for="email">Email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="ton@email.com"
+        formControlName="email"
+      />
+
+      <label for="password">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        placeholder="Ton mot de passe"
+        formControlName="password"
+      />
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <p class="switch-link">
+      Pas encore de compte ?
+      <a routerLink="/register">Créer un compte</a>
+    </p>
+  </div>
+</div>
