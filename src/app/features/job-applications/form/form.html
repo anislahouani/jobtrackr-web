@@ -1,1 +1,83 @@
-<p>form works!</p>
+<div class="form-page">
+  <div class="form-card">
+    <h1>Nouvelle candidature</h1>
+    <p>Ajoute une nouvelle candidature à ton suivi.</p>
+
+    <form
+      [formGroup]="applicationForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <label for="company">Entreprise</label>
+      <input
+        id="company"
+        type="text"
+        formControlName="company"
+      />
+
+      <label for="position">Poste</label>
+      <input
+        id="position"
+        type="text"
+        formControlName="position"
+      />
+
+      <label for="location">Lieu</label>
+      <input
+        id="location"
+        type="text"
+        formControlName="location"
+      />
+
+      <label for="jobUrl">Lien de l'offre</label>
+      <input
+        id="jobUrl"
+        type="url"
+        formControlName="jobUrl"
+      />
+
+      <label for="status">Statut</label>
+      <select
+         id="status"
+        formControlName="status"
+       >
+        <option [ngValue]="0">Wishlist</option>
+        <option [ngValue]="1">Applied</option>
+        <option [ngValue]="2">Interview</option>
+        <option [ngValue]="3">Offer</option>
+        <option [ngValue]="4">Rejected</option>
+       </select>
+
+      <label for="appliedAt">Date de candidature</label>
+      <input
+        id="appliedAt"
+        type="date"
+        formControlName="appliedAt"
+      />
+
+      <label for="notes">Notes</label>
+      <textarea
+        id="notes"
+        rows="5"
+        formControlName="notes"
+      ></textarea>
+
+      @if (errorMessage) {
+        <p class="error-message">{{ errorMessage }}</p>
+      }
+
+      <div class="actions">
+        <button
+          type="button"
+          (click)="router.navigate(['/dashboard'])"
+          class="secondary"
+        >
+          Annuler
+        </button>
+
+        <button type="submit">
+          Enregistrer
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

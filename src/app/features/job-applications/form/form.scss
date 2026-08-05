@@ -1,0 +1,59 @@
+.form-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: #f5f7fb;
+}
+
+.form-card {
+  width: 100%;
+  max-width: 620px;
+  padding: 32px;
+  border-radius: 16px;
+  background: white;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+input,
+select,
+textarea {
+  padding: 12px 14px;
+  border: 1px solid #d0d5dd;
+  border-radius: 8px;
+  font: inherit;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+button {
+  padding: 12px 18px;
+  border: 0;
+  border-radius: 8px;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  background: #111827;
+  color: white;
+}
+
+button.secondary {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+.error-message {
+  color: #b42318;
+}
