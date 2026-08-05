@@ -24,17 +24,59 @@
   }
 
   <section class="applications-grid">
-    @for (application of applications; track application.id) {
-      <article class="application-card">
-        <h2>{{ application.company }}</h2>
-        <h3>{{ application.position }}</h3>
+  @for (application of applications; track application.id) {
+    <article class="application-card">
+      <div class="card-header">
+        <div>
+          <h2>{{ application.company }}</h2>
+          <h3>{{ application.position }}</h3>
+        </div>
 
-        @if (application.location) {
-          <p>{{ application.location }}</p>
-        }
+        <span
+          class="status-badge"
+          [class.status-wishlist]="application.status === 0"
+          [class.status-applied]="application.status === 1"
+          [class.status-interview]="application.status === 2"
+          [class.status-offer]="application.status === 3"
+          [class.status-rejected]="application.status === 4"
+        >
+          {{ getStatusLabel(application.status) }}
+        </span>
+      </div>
 
-        <p>Statut : {{ application.status }}</p>
-      </article>
-    }
-  </section>
+      @if (application.location) {
+        <p>📍 {{ application.location }}</p>
+      }
+
+      @if (application.appliedAt) {
+        <p>
+          Date :
+          {{ application.appliedAt | date:'dd/MM/yyyy' }}
+        </p>
+      }
+
+      @if (application.notes) {
+        <p>{{ application.notes }}</p>
+      }
+
+      <div class="card-actions">
+        <button
+  type="button"
+  class="secondary"
+  (click)="router.navigate(['/applications', application.id, 'edit'])"
+>
+  Modifier
+</button>
+
+        <button
+  type="button"
+  class="danger"
+  (click)="deleteApplication(application.id)"
+>
+  Supprimer
+</button>
+      </div>
+    </article>
+  }
+</section>
 </div>

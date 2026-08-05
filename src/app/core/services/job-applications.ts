@@ -25,6 +25,10 @@ export class JobApplications {
     return this.http.get<JobApplication[]>(this.apiUrl);
   }
 
+  getById(id: string): Observable<JobApplication> {
+  return this.http.get<JobApplication>(`${this.apiUrl}/${id}`);
+}
+
   create(
     request: CreateJobApplicationRequest
   ): Observable<JobApplication> {
@@ -33,4 +37,19 @@ export class JobApplications {
       request
     );
   }
+
+update(
+  id: string,
+  request: CreateJobApplicationRequest
+): Observable<JobApplication> {
+  return this.http.put<JobApplication>(
+    `${this.apiUrl}/${id}`,
+    request
+  );
+}
+
+  delete(id: string): Observable<void> {
+  return this.http.delete<void>(`${this.apiUrl}/${id}`);
+}
+
 }

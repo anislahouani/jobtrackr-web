@@ -1,6 +1,8 @@
 <div class="form-page">
   <div class="form-card">
-    <h1>Nouvelle candidature</h1>
+    <h1>
+  {{ isEditMode ? 'Modifier la candidature' : 'Nouvelle candidature' }}
+</h1>
     <p>Ajoute une nouvelle candidature à ton suivi.</p>
 
     <form
@@ -74,9 +76,9 @@
           Annuler
         </button>
 
-        <button type="submit">
-          Enregistrer
-        </button>
+       <button type="submit">
+  {{ isEditMode ? 'Enregistrer les modifications' : 'Enregistrer' }}
+</button>
       </div>
     </form>
   </div>
