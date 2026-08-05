@@ -1,12 +1,99 @@
 <div class="dashboard-page">
   <header class="dashboard-header">
-    <div>
-      <h1>JobTrackr</h1>
-      <p>Bienvenue {{ firstName }} 👋</p>
-    </div>
+  <div>
+    <h1>JobTrackr</h1>
+    <p>Bienvenue {{ firstName }} 👋</p>
+  </div>
 
-    <a href="/applications/new">Nouvelle candidature</a>
-  </header>
+  <div class="header-actions">
+    <a href="/applications/new">
+      Nouvelle candidature
+    </a>
+
+    <button
+      type="button"
+      class="logout-button"
+      (click)="logout()"
+    >
+      Déconnexion
+    </button>
+  </div>
+</header>
+
+<section class="stats-grid">
+  <article class="stat-card">
+    <span>Total</span>
+    <strong>{{ totalApplications }}</strong>
+  </article>
+
+  <article class="stat-card">
+    <span>Entretiens</span>
+    <strong>{{ interviewCount }}</strong>
+  </article>
+
+  <article class="stat-card">
+    <span>Offres</span>
+    <strong>{{ offerCount }}</strong>
+  </article>
+</section>
+
+<section class="search-section">
+  <input
+    type="text"
+    placeholder="🔍 Rechercher une entreprise, un poste..."
+    [(ngModel)]="searchTerm"
+  >
+</section>
+
+<section class="filters-section">
+  <button
+    type="button"
+    [class.active]="selectedStatus === null"
+    (click)="selectedStatus = null"
+  >
+    Tous
+  </button>
+
+  <button
+    type="button"
+    [class.active]="selectedStatus === 0"
+    (click)="selectedStatus = 0"
+  >
+    Wishlist
+  </button>
+
+  <button
+    type="button"
+    [class.active]="selectedStatus === 1"
+    (click)="selectedStatus = 1"
+  >
+    Envoyées
+  </button>
+
+  <button
+    type="button"
+    [class.active]="selectedStatus === 2"
+    (click)="selectedStatus = 2"
+  >
+    Entretiens
+  </button>
+
+  <button
+    type="button"
+    [class.active]="selectedStatus === 3"
+    (click)="selectedStatus = 3"
+  >
+    Offres
+  </button>
+
+  <button
+    type="button"
+    [class.active]="selectedStatus === 4"
+    (click)="selectedStatus = 4"
+  >
+    Refus
+  </button>
+</section>
 
   @if (isLoading) {
     <p>Chargement...</p>
@@ -24,7 +111,7 @@
   }
 
   <section class="applications-grid">
-  @for (application of applications; track application.id) {
+  @for (application of filteredApplications; track application.id) {
     <article class="application-card">
       <div class="card-header">
         <div>

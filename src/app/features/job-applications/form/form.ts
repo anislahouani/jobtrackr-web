@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { JobApplications } from '../../../core/services/job-applications';
+import { ToastService } from '../../../shared/services/toast';
 
 @Component({
   selector: 'app-form',
@@ -13,6 +14,7 @@ export class Form implements OnInit {
   private formBuilder = inject(FormBuilder);
   private jobApplicationsService = inject(JobApplications);
   private route = inject(ActivatedRoute);
+  private toastService = inject(ToastService);
 
   router = inject(Router);
 
@@ -82,8 +84,14 @@ export class Form implements OnInit {
 
     operation.subscribe({
       next: () => {
-        this.router.navigate(['/dashboard']);
-      },
+  this.toastService.show(
+    this.isEditMode
+      ? 'Candidature modifiée avec succès.'
+      : 'Candidature créée avec succès.'
+  );
+
+  this.router.navigate(['/dashboard']);
+},
       error: () => {
         this.errorMessage = this.isEditMode
           ? 'Impossible de modifier la candidature.'
