@@ -27,7 +27,7 @@ export interface AuthResponse {
 export class Auth {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:5159/api/Auth';
+  private apiUrl = 'https://jobtrackr-api-gwkx.onrender.com/api/Auth';
 
   login(request: LoginRequest): Observable<AuthResponse> {
     return this.http.post<AuthResponse>(

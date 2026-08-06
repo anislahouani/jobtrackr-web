@@ -19,7 +19,7 @@ export interface CreateJobApplicationRequest {
 export class JobApplications {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:5159/api/job-applications';
+  private apiUrl = 'https://jobtrackr-api-gwkx.onrender.com/api/job-applications';
 
   getAll(): Observable<JobApplication[]> {
     return this.http.get<JobApplication[]>(this.apiUrl);
