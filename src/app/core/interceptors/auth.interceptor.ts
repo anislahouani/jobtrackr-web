@@ -17,11 +17,15 @@ export const authInterceptor: HttpInterceptorFn = (request, next) => {
 
   return next(authenticatedRequest).pipe(
     catchError((error: HttpErrorResponse) => {
-      if (error.status === 401) {
-        localStorage.removeItem('token');
-        localStorage.removeItem('firstName');
-        router.navigate(['/login']);
-      }
+      if (
+  error.status === 401 &&
+  !request.url.includes('/Auth/login') &&
+  !request.url.includes('/Auth/register')
+) {
+  localStorage.removeItem('token');
+  localStorage.removeItem('firstName');
+  router.navigate(['/login']);
+}
 
       return throwError(() => error);
     })

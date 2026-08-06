@@ -9,7 +9,7 @@ export interface CreateJobApplicationRequest {
   location: string;
   jobUrl: string;
   status: number;
-  appliedAt: string;
+  appliedAt: string | null;
   notes: string;
 }
 

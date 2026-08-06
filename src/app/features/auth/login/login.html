@@ -12,6 +12,20 @@
         formControlName="email"
       />
 
+    @if (
+      loginForm.controls.email.touched &&
+      loginForm.controls.email.hasError('required')
+    ) {
+      <p class="field-error">L'email est obligatoire.</p>
+    }
+
+    @if (
+      loginForm.controls.email.touched &&
+      loginForm.controls.email.hasError('email')
+    ) {
+      <p class="field-error">L'email n'est pas valide.</p>
+    }
+
       <label for="password">Mot de passe</label>
       <input
         id="password"
@@ -20,11 +34,24 @@
         formControlName="password"
       />
 
-      @if (errorMessage) {
-        <p class="error-message">{{ errorMessage }}</p>
-      }
+    @if (
+      loginForm.controls.password.touched &&
+      loginForm.controls.password.hasError('required')
+    ) {
+      <p class="field-error">Le mot de passe est obligatoire.</p>
+    }
 
-      <button type="submit">Se connecter</button>
+    @if (errorMessage()) {
+  <p class="error-message">
+    {{ errorMessage() }}
+  </p>
+}
+      <button
+  type="submit"
+  [disabled]="isLoading()"
+>
+  {{ isLoading() ? 'Connexion...' : 'Se connecter' }}
+</button>
     </form>
 
     <p class="switch-link">

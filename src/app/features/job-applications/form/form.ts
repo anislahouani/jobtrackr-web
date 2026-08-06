@@ -21,6 +21,7 @@ export class Form implements OnInit {
   errorMessage = '';
   applicationId: string | null = null;
   isEditMode = false;
+  isLoading = false;
 
   applicationForm = this.formBuilder.nonNullable.group({
     company: ['', Validators.required],
@@ -71,32 +72,38 @@ export class Form implements OnInit {
     const rawValue = this.applicationForm.getRawValue();
 
     const request = {
-      ...rawValue,
-      appliedAt: rawValue.appliedAt
-        ? new Date(`${rawValue.appliedAt}T00:00:00Z`).toISOString()
-        : ''
-    };
+  ...rawValue,
+  appliedAt: rawValue.appliedAt
+    ? new Date(`${rawValue.appliedAt}T00:00:00Z`).toISOString()
+    : null
+};
 
+    this.isLoading = true;
+    this.errorMessage = '';
+    
     const operation =
       this.isEditMode && this.applicationId
         ? this.jobApplicationsService.update(this.applicationId, request)
         : this.jobApplicationsService.create(request);
 
     operation.subscribe({
-      next: () => {
-  this.toastService.show(
-    this.isEditMode
-      ? 'Candidature modifiée avec succès.'
-      : 'Candidature créée avec succès.'
-  );
+  next: () => {
+    this.toastService.show(
+      this.isEditMode
+        ? 'Candidature modifiée avec succès.'
+        : 'Candidature créée avec succès.'
+    );
 
-  this.router.navigate(['/dashboard']);
-},
-      error: () => {
-        this.errorMessage = this.isEditMode
-          ? 'Impossible de modifier la candidature.'
-          : 'Impossible de créer la candidature.';
-      }
-    });
+    this.isLoading = false;
+    this.router.navigate(['/dashboard']);
+  },
+  error: () => {
+    this.isLoading = false;
+
+    this.errorMessage = this.isEditMode
+      ? 'Impossible de modifier la candidature.'
+      : 'Impossible de créer la candidature.';
+  }
+});
   }
 }

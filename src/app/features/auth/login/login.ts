@@ -1,6 +1,12 @@
-import { Component, inject } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, inject, signal } from '@angular/core';
+import {
+  FormBuilder,
+  ReactiveFormsModule,
+  Validators
+} from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
+import { finalize } from 'rxjs';
+
 import { Auth } from '../../../core/services/auth';
 
 @Component({
@@ -14,7 +20,8 @@ export class Login {
   private authService = inject(Auth);
   private router = inject(Router);
 
-  errorMessage = '';
+  isLoading = signal(false);
+  errorMessage = signal('');
 
   loginForm = this.formBuilder.nonNullable.group({
     email: ['', [Validators.required, Validators.email]],
@@ -27,17 +34,28 @@ export class Login {
       return;
     }
 
-    this.errorMessage = '';
+    this.isLoading.set(true);
+    this.errorMessage.set('');
 
-    this.authService.login(this.loginForm.getRawValue()).subscribe({
-      next: response => {
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('firstName', response.firstName);
-        this.router.navigate(['/dashboard']);
-      },
-      error: () => {
-        this.errorMessage = 'Email ou mot de passe incorrect.';
-      }
-    });
+    this.authService
+      .login(this.loginForm.getRawValue())
+      .pipe(
+        finalize(() => {
+          this.isLoading.set(false);
+        })
+      )
+      .subscribe({
+        next: response => {
+          localStorage.setItem('token', response.token);
+          localStorage.setItem('firstName', response.firstName);
+
+          this.router.navigate(['/dashboard']);
+        },
+        error: () => {
+          this.errorMessage.set(
+            'Email ou mot de passe incorrect.'
+          );
+        }
+      });
   }
 }

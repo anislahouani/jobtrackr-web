@@ -95,19 +95,19 @@
   </button>
 </section>
 
-  @if (isLoading) {
+  @if (isLoading()) {
     <p>Chargement...</p>
   }
 
-  @if (errorMessage) {
-    <p class="error-message">{{ errorMessage }}</p>
+  @if (errorMessage()) {
+    <p class="error-message">{{ errorMessage() }}</p>
   }
 
-  @if (!isLoading && applications.length === 0) {
-    <div class="empty-state">
-      <h2>Aucune candidature</h2>
-      <p>Ajoute ta première candidature pour commencer.</p>
-    </div>
+  @if (!isLoading() && applications().length === 0) {
+  <div class="empty-state">
+    <h2>Aucune candidature</h2>
+    <p>Ajoute ta première candidature pour commencer.</p>
+  </div>
   }
 
   <section class="applications-grid">

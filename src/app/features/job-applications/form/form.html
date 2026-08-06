@@ -15,6 +15,14 @@
         type="text"
         formControlName="company"
       />
+      @if (
+        applicationForm.controls.company.touched &&
+        applicationForm.controls.company.hasError('required')
+      ) {
+        <p class="field-error">
+          L'entreprise est obligatoire.
+        </p>
+      }
 
       <label for="position">Poste</label>
       <input
@@ -22,6 +30,14 @@
         type="text"
         formControlName="position"
       />
+      @if (
+        applicationForm.controls.position.touched &&
+        applicationForm.controls.position.hasError('required')
+      ) {
+        <p class="field-error">
+          Le poste est obligatoire.
+        </p>
+      }
 
       <label for="location">Lieu</label>
       <input
@@ -76,8 +92,15 @@
           Annuler
         </button>
 
-       <button type="submit">
-  {{ isEditMode ? 'Enregistrer les modifications' : 'Enregistrer' }}
+       <button
+  type="submit"
+  [disabled]="isLoading"
+>
+  @if (isLoading) {
+    Enregistrement...
+  } @else {
+    {{ isEditMode ? 'Enregistrer les modifications' : 'Enregistrer' }}
+  }
 </button>
       </div>
     </form>
