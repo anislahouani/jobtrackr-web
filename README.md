@@ -1,59 +1,223 @@
-# JobTrackrWeb
+<h1 align="center">JobTrackr</h1>
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 22.1.2.
+<p align="center">
+A modern full-stack application for managing and tracking job applications.
+</p>
 
-## Development server
+<p align="center">
 
-To start a local development server, run:
+![Angular](https://img.shields.io/badge/Angular-20-DD0031?logo=angular&logoColor=white)
+![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-10-512BD4?logo=dotnet&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-Authentication-success)
+![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
+![Render](https://img.shields.io/badge/API-Render-46E3B7)
+
+</p>
+
+---
+
+## Overview
+
+JobTrackr is a full-stack web application built to simplify the job search process.
+
+Instead of tracking applications in spreadsheets or notes, users can centralize everything in one place, monitor their progress, and keep a clear overview of their recruitment pipeline.
+
+The project was built from scratch using Angular and ASP.NET Core, with JWT authentication, PostgreSQL, and a cloud deployment architecture.
+
+---
+
+## Live Demo
+
+**Application**
+
+https://jobtrackr-web-navy.vercel.app
+
+**REST API**
+
+https://jobtrackr-api-gwkx.onrender.com
+
+---
+
+## Features
+
+- User registration
+- Secure authentication using JWT
+- Password hashing with BCrypt
+- Create, edit and delete job applications
+- Search by company or position
+- Filter applications by status
+- Responsive dashboard
+- Protected routes
+- RESTful API
+
+---
+
+## Tech Stack
+
+### Frontend
+
+- Angular 20
+- TypeScript
+- SCSS
+- Angular Signals
+- Standalone Components
+- RxJS
+
+### Backend
+
+- ASP.NET Core 10
+- Entity Framework Core
+- PostgreSQL
+- JWT Authentication
+- BCrypt
+
+### Deployment
+
+- Vercel
+- Render
+- Neon PostgreSQL
+
+---
+
+## Architecture
+
+```text
+                Angular
+                    │
+                    │ HTTPS
+                    ▼
+        ASP.NET Core REST API
+                    │
+        Entity Framework Core
+                    │
+                    ▼
+          PostgreSQL (Neon)
+```
+
+---
+
+## Screenshots
+
+### Login
+
+> Screenshot coming soon.
+
+### Dashboard
+
+> Screenshot coming soon.
+
+### New Application
+
+> Screenshot coming soon.
+
+---
+
+## Run Locally
+
+### Clone the repositories
 
 ```bash
+git clone https://github.com/anislahouani/jobtrackr-api.git
+git clone https://github.com/anislahouani/jobtrackr-web.git
+```
+
+### Backend
+
+```bash
+cd JobTrackr.Api
+
+dotnet restore
+
+dotnet ef database update
+
+dotnet run
+```
+
+The API will be available at:
+
+```text
+http://localhost:5159
+```
+
+### Frontend
+
+```bash
+cd JobTrackr.Web
+
+npm install
+
 ng serve
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+The application will be available at:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```text
+http://localhost:4200
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+---
 
-```bash
-ng generate --help
+## Project Structure
+
+### Backend
+
+```text
+Controllers/
+Configurations/
+DTOs/
+Data/
+Enums/
+Interfaces/
+Mappings/
+Middleware/
+Migrations/
+Models/
+Repositories/
+Services/
 ```
 
-## Building
+### Frontend
 
-To build the project run:
-
-```bash
-ng build
+```text
+src/
+ ├── app/
+ │   ├── core/
+ │   ├── features/
+ │   ├── shared/
+ │   └── app.routes.ts
+ ├── public/
+ └── styles.scss
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Roadmap
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Planned improvements:
 
-```bash
-ng test
-```
+- Resume and cover letter upload
+- Email notifications
+- Calendar integration
+- Analytics dashboard
+- Unit testing
+- Integration testing
+- Docker support
+- GitHub Actions CI/CD
 
-## Running end-to-end tests
+---
 
-For end-to-end (e2e) testing, run:
+## Author
 
-```bash
-ng e2e
-```
+**Anis Lahouani**
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+GitHub
 
-## Additional Resources
+https://github.com/anislahouani
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+---
+
+## License
+
+This project is licensed under the MIT License.
