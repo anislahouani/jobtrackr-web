@@ -102,15 +102,41 @@ https://jobtrackr-api-gwkx.onrender.com
 
 ### Login
 
-> Screenshot coming soon.
+<p align="center">
+  <img src="docs/images/login.png" width="900">
+</p>
+
+---
+
+### Register
+
+<p align="center">
+  <img src="docs/images/register.png" width="900">
+</p>
+
+---
 
 ### Dashboard
 
-> Screenshot coming soon.
+<p align="center">
+  <img src="docs/images/dashboard.png" width="900">
+</p>
+
+---
 
 ### New Application
 
-> Screenshot coming soon.
+<p align="center">
+  <img src="docs/images/new-application.png" width="900">
+</p>
+
+---
+
+### Search & Filters
+
+<p align="center">
+  <img src="docs/images/search-filter.png" width="900">
+</p>
 
 ---
 
