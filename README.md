@@ -1,6 +1,12 @@
 <h1 align="center">JobTrackr</h1>
 
 <p align="center">
+  <a href="https://github.com/anislahouani/jobtrackr-web/actions/workflows/ci.yml">
+    <img src="https://github.com/anislahouani/jobtrackr-web/actions/workflows/ci.yml/badge.svg?branch=main" alt="JobTrackr Web CI">
+  </a>
+</p>
+
+<p align="center">
 Angular frontend for JobTrackr, a full-stack application for managing and tracking job applications.
 </p>
 
