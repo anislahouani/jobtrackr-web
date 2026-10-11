@@ -1,7 +1,7 @@
 <h1 align="center">JobTrackr</h1>
 
 <p align="center">
-A modern full-stack application for managing and tracking job applications.
+Angular frontend for JobTrackr, a full-stack application for managing and tracking job applications.
 </p>
 
 <p align="center">
@@ -24,7 +24,7 @@ JobTrackr is a full-stack web application built to simplify the job search proce
 
 Instead of tracking applications in spreadsheets or notes, users can centralize everything in one place, monitor their progress, and keep a clear overview of their recruitment pipeline.
 
-The project was built from scratch using Angular and ASP.NET Core, with JWT authentication, PostgreSQL, and a cloud deployment architecture.
+The frontend is built with Angular and connects to a separate ASP.NET Core backend with JWT authentication, PostgreSQL persistence, and cloud deployment.
 
 ---
 
@@ -152,7 +152,7 @@ git clone https://github.com/anislahouani/jobtrackr-web.git
 ### Backend
 
 ```bash
-cd JobTrackr.Api
+cd jobtrackr-api
 
 dotnet restore
 
@@ -170,7 +170,7 @@ http://localhost:5159
 ### Frontend
 
 ```bash
-cd JobTrackr.Web
+cd ../jobtrackr-web
 
 npm install
 
