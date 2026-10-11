@@ -6,10 +6,10 @@ Angular frontend for JobTrackr, a full-stack application for managing and tracki
 
 <p align="center">
 
-![Angular](https://img.shields.io/badge/Angular-20-DD0031?logo=angular&logoColor=white)
+![Angular](https://img.shields.io/badge/Angular-22-DD0031?logo=angular&logoColor=white)
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET_Core-10-512BD4?logo=dotnet&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-17-4169E1?logo=postgresql&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-6-3178C6?logo=typescript&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-Authentication-success)
 ![Vercel](https://img.shields.io/badge/Frontend-Vercel-black?logo=vercel)
 ![Render](https://img.shields.io/badge/API-Render-46E3B7)
@@ -58,8 +58,8 @@ https://jobtrackr-api-gwkx.onrender.com
 
 ### Frontend
 
-- Angular 20
-- TypeScript
+- Angular 22
+- TypeScript 6
 - SCSS
 - Angular Signals
 - Standalone Components
@@ -219,6 +219,12 @@ src/
 
 ---
 
+## CI
+
+GitHub Actions automatically installs dependencies and verifies that the Angular production build succeeds on pushes and pull requests to `main`.
+
+---
+
 ## Roadmap
 
 Planned improvements:
@@ -230,7 +236,6 @@ Planned improvements:
 - Unit testing
 - Integration testing
 - Docker support
-- GitHub Actions CI/CD
 
 ---
 
